@@ -428,7 +428,7 @@ class TestPodcast(unittest.TestCase):
 
     def test_categoryWithoutSubcategory(self):
         c = Category([("Arts",)])
-        self.fg.category = c
+        self.fg.categories = c
         channel = self.fg._create_rss().find("channel")
         itunes_category = channel.find("{%s}category" % self.nsItunes)
         assert itunes_category is not None
@@ -439,7 +439,7 @@ class TestPodcast(unittest.TestCase):
 
     def test_categoryWithSubcategory(self):
         c = Category([("Arts", "Food")])
-        self.fg.category = c
+        self.fg.categories = c
         channel = self.fg._create_rss().find("channel")
         itunes_category = channel.find("{%s}category" % self.nsItunes)
         assert itunes_category is not None
